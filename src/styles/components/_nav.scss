@@ -1,0 +1,164 @@
+@use '../abstracts' as *;
+
+// primary-nav => desktop view
+.nav-desk {
+  @include flex($align: center);
+  background-color: get-color(clr-dark, .8);
+  width: 65%;
+  padding-inline-start: 3rem;
+  margin-block-start: 2rem;
+  gap: 2rem;
+
+  .nav-link span {
+    display: none;
+    @include breakpoint-up('lg') {
+      padding-right: .5rem;
+      display: inline;
+      font-weight: 600;
+    }
+  }
+
+  // if browser supports backdrop => nav-disk
+  @supports (backdrop-filter: blur(1rem)) {
+    background-color: get-color(clr-light, .04);
+    backdrop-filter: blur(81.5485px); 
+  }
+
+  @include breakpoint-up('lg') {
+    padding-inline-start: 5rem;
+    width: 60%;
+    
+  }
+
+  @include breakpoint-down('sm') {
+    display: none;
+  }
+}
+
+// primary-nav => mobile view
+.nav-mobile {
+  @include flex($align: left, $direction: column);
+  background-color: get-color(clr-dark, .8);
+  padding-block: min(20rem, 15vh);
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 60%;
+  transition: transform .5s ease-in-out;
+  z-index: 5;
+
+  &.show {
+    transform: translateX(0);
+  }
+
+  &.hide {
+    transform: translateX(100%);
+  }
+
+  .nav-link {
+    padding-left: 2rem;
+    border-bottom: 0;
+    
+    &.active {
+      @include breakpoint-down('sm') {
+        border-left: 4px solid get-color(clr-light);
+      }
+    }
+    
+    span {
+      padding-right: .5rem;
+      font-weight: 600;
+    }
+
+    &:hover {
+      color: get-color(clr-accent);
+      border-left: 4px solid get-color(clr-accent);
+      border-bottom: 0;
+    }
+  }
+
+  // if browser supports backdrop => nav-disk
+  @supports (backdrop-filter: blur(1rem)) {
+    background-color: get-color(clr-light, .04);
+    backdrop-filter: blur(81.5485px); 
+  }
+
+  @include breakpoint-up('sm') {
+    display: none;
+  }
+}
+
+
+.nav-link {
+  transition: border .5s linear, color .3s ease-out;
+  padding-block: 1.5rem;
+  border-bottom: 4px solid transparent;
+  
+  &:hover {
+    color: get-color(clr-accent);
+    border-bottom: 4px solid get-color(clr-accent);
+  }
+}
+
+.active {
+  border-bottom: 4px solid get-color(clr-light);
+}
+
+.bullet-nav {
+  @include flex($align: center);
+  gap: 1.5rem;
+  
+  .bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: get-color(clr-light, .17);
+    cursor: pointer;
+    &:not(.active-bullet):hover {
+      background-color: get-color(clr-accent);
+    }
+
+    &.active-bullet {
+      background-color: get-color(clr-light);
+    }
+
+    @include breakpoint-up('md') {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
+.numbered-nav {
+  @include flex($justify: center, $direction: row);
+  gap: 1.5rem;
+
+  > * {
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    color: get-color(clr-light);
+    border: 1px solid get-color(clr-light, .25);
+    border-radius: 50%;
+  
+    &:not(.active-num):hover {
+      border: 1px solid get-color(clr-light);
+    }
+  }
+  .active-num {
+    background-color: get-color(clr-light);
+    color: get-color(clr-dark);
+  }
+
+  @include breakpoint-up('lg') {
+    @include flex($align: center, $direction: column);
+    > * {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}

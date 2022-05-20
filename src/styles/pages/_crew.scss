@@ -1,0 +1,109 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the crew page.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts' as *;
+
+.bg-crew {
+  background: {
+    image: url('../../assets/crew/background-crew-mobile.jpg');
+    repeat: no-repeat;
+    size: cover;
+    position: center bottom;
+  }
+
+  @include breakpoint-up('md') {
+    background-image: url('../../assets/crew/background-crew-tablet.jpg');
+  }
+  
+  @include breakpoint-up('lg') {
+    background-image: url('../../assets/crew/background-crew-desktop.jpg');
+    
+  }
+}
+
+.crew {
+  --flow-space: 2rem;
+  position: relative;
+  height: 75vh; // temporary
+  
+  > div { 
+    @include flex($justify: space-between, $direction: column-reverse);
+    text-align: center;
+    
+    h4 {
+      color: get-color(clr-light, .25);
+    }
+    .member {
+      --flow-space: 2.5rem;
+      flex: 1;
+
+      > div {
+        --flow-space: 1rem;
+        
+        h4 {font-size: var(--fs-300);}
+        h2 {font-size: var(--fs-500);}
+        p {font-size: var(--fs-200);}
+
+        @include breakpoint-up('md') {
+          // :is(h4, h2) {font-size: var(--fs-600);}
+          h2 {font-size: var(--fs-600);}
+          p {font-size: var(--fs-400);}
+        }
+
+      }
+
+      nav {
+        justify-content: center;
+
+        @include breakpoint-up('lg') {
+        justify-content: flex-start;
+        }
+      }
+
+      @include breakpoint-down('sm') {
+        @include flex($justify: space-between, $direction: column-reverse);
+        gap: 2rem;
+      }
+
+      @include breakpoint-up('lg') {
+        --flow-space: 5rem;
+      }
+    }
+
+    .image {
+      flex: 1;
+      margin-top: 3rem;
+
+      img {
+        margin-inline: auto;
+      }
+
+      @include breakpoint-down('sm') {
+        margin-top: 0;
+        border-bottom: 1px solid get-color(clr-light, .14);
+        img {
+          width: 50%;
+        }
+      }
+
+      @include breakpoint-up('lg') {
+        img {
+          position: absolute;
+          bottom: 0;
+          right: 1rem;
+          max-width: 30%;
+        }
+      }
+    }
+
+    @include breakpoint-up('md') {
+      @include flex($justify: space-between, $direction: column);
+    }
+
+    @include breakpoint-up('lg') {
+      @include flex($justify: space-between, $direction: row);
+      text-align: left;
+    }
+  }
+}

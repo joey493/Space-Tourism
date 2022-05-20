@@ -1,0 +1,49 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@use 'sass:map';
+@use './variables' as *;
+
+
+// flex
+@mixin flex-variant($display, $direction: false, $align: false, $justify: false, $wrap: false) {
+  display: $display;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $align {
+    align-items: $align;
+  }
+
+  @if $justify {
+    justify-content: $justify;
+  }
+
+  @if $wrap {
+    flex-wrap: $wrap;
+  }
+};
+
+@mixin flex($direction: false, $align: false, $justify: false, $wrap: false) {
+  @include flex-variant(flex, $direction: $direction, $align: $align, $justify: $justify, $wrap: $wrap);
+};
+
+@mixin inline-flex($direction: false, $align: false, $justify: false, $wrap: false) {
+  @include flex-variant(inline-flex, $direction: $direction, $align: $align, $justify: $justify, $wrap: $wrap);
+};
+
+// media query
+@mixin breakpoint-up($size) { // min-width
+  @media (min-width: map.get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) { // max-width
+  @media (max-width: map.get($breakpoints, $size)) {
+    @content;
+  }
+}

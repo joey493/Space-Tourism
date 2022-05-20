@@ -1,0 +1,66 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the distination page.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts' as *;
+
+.bg-tech {
+  background: {
+    image: url('../../assets/technology/background-technology-mobile.jpg');
+    repeat: no-repeat;
+    size: cover;
+    position: center bottom;
+  }
+
+  @include breakpoint-up('lg') {
+    background-image: url('../../assets/technology/background-technology-tablet.jpg');
+  }
+  
+  @include breakpoint-up('lg') {
+    background-image: url('../../assets/technology/background-technology-desktop.jpg');
+  }
+}
+
+.tech {
+  --flow-space: 3rem;
+
+  > div {
+    @include flex($justify: space-between, $direction: column-reverse);
+    gap: 2rem;
+
+    .content {
+      @include flex($justify: center, $direction: column);
+      gap: 1.5rem;
+      flex: 1;
+      text-align: center;
+      h2 {font-size: var(--fs-600);}
+      :is(h4, p) {font-size: var(--fs-200);}
+      @include breakpoint-up('lg') {
+        @include flex($justify: space-between, $direction: row);
+        gap: 2.5rem;
+        text-align: left;
+        h2 {font-size: var(--fs-700);}
+        :is(h4, p) {font-size: var(--fs-300);}
+      }
+    }
+
+    .image {
+      flex: 1;
+      img {
+        margin-inline: auto;
+      }
+      @include breakpoint-up('lg') {
+        img {
+          position: absolute;
+          right: 0;
+          top: 30%;
+          width: 30%;
+        }
+      }
+    }
+
+    @include breakpoint-up('lg') {
+      @include flex($justify: space-between, $direction: row);
+    }
+  }
+}

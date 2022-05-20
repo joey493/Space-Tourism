@@ -1,0 +1,76 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts' as *;
+
+/* Box sizing */
+*, *::before, *::before {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, picture {
+  margin: 0;
+}
+
+h1, h2, h3, 
+h4, h5, h6, p {
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* set up body */
+body {
+  font-family: var(--ff-sans-normal);
+  font-size: var(--fs-400);
+  background-color: get-color(clr-dark);
+  color: get-color(clr-light);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* make form elements easier to work with */
+select,
+button,
+textarea,
+input {
+  font: inherit;
+}
+
+/* remove animation for people who've turned them off */
+/* @media (prefers-reduced-motion: no-preferce) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::before {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+  }
+}
+
+
+// added
+#root {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: 100vh;
+}

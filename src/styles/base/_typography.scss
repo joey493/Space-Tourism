@@ -1,0 +1,32 @@
+/**
+ * Basic typography style for copy text
+ */
+
+@use '../abstracts' as *;
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Bellefair&family=Barlow&display=swap');
+
+
+@each $ff, $value in $font-family {
+  .ff-#{$ff} {
+    font-family: $value;
+  }
+}
+
+@each $fs, $value in $font-size {
+  .fs-#{$fs} {
+    font-size: $value;
+  }
+}
+
+.letter-spacing-1 {letter-spacing: var(--letter-spacing-1);}
+.letter-spacing-2 {letter-spacing: var(--letter-spacing-2);}
+.letter-spacing-3 {letter-spacing: var(--letter-spacing-3);}
+
+.fs-900, .fs-800,
+.fs-700, .fs-600 {
+    line-height: 1.1;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

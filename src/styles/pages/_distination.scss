@@ -1,0 +1,120 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the distination page.
+// -----------------------------------------------------------------------------
+
+@use '../abstracts' as *;
+
+.bg-dist {
+  background: {
+    image: url('../../assets/destination/background-destination-mobile.jpg');
+    repeat: no-repeat;
+    size: cover;
+    position: center bottom;
+  }
+
+  @include breakpoint-up('md') {
+    background-image: url('../../assets/destination/background-destination-tablet.jpg');
+  }
+  
+  @include breakpoint-up('lg') {
+    background-image: url('../../assets/destination/background-destination-desktop.jpg');
+    
+  }
+}
+
+.dist {
+  --flow-space: 2rem;
+
+  > div { // img & text container
+    text-align: center;
+
+    img {
+      margin-inline: auto;
+      margin-bottom: 3rem;
+      animation: rotate 50s infinite linear;
+    }
+
+    .text {
+      nav {
+        @include flex($align: center, $justify: center);
+        gap: 2rem;
+        
+        a {
+          cursor: pointer;
+          padding-block: .5rem;
+          color: get-color(clr-accent);
+        }
+      }
+
+      
+
+      > div:first-of-type {
+        position: relative;
+        
+        h3 {
+          font-size: var(--fs-700);
+          margin-block: 1rem;
+        }
+
+        p {
+          font-size: var(--fs-200);
+        }
+  
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -2rem;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: get-color(clr-light, .2);
+        }
+  
+        @include breakpoint-up('md') {
+          h3 {
+            font-size: var(--fs-800);
+            margin-block: 0;
+          }
+
+          p {
+            font-size: var(--fs-300);
+          }
+        }
+      }
+
+      > div:last-child {
+        @include flex($align: center, $justify: center, $direction: column);
+        gap: 1.5rem;
+        margin-top: 4.5rem;
+        @include breakpoint-up('md') {
+          @include flex($align: center, $justify: center, $direction: row);
+          margin-top: 4rem;
+        gap: 4rem;
+
+        }
+      }
+      
+
+      @include breakpoint-up('lg') {
+        @include flex($align: flex-start, $justify: space-between, $direction: column);
+        gap: 1.5rem;
+        width: 45%;
+      }
+    }
+
+    @include breakpoint-up('lg') {
+      @include flex($align: flex-start, $justify: space-between);
+      text-align: left;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+// fonts 
+$font-family: (
+  serif: ("Bellefair", serif),
+  sans-cond: ("Barlow Condensed", sans-serif),
+  sans-normal: ("Barlow", sans-serif),
+);
+
+$font-size: (
+  900: 9.375rem, // 150px
+  800: 6.25rem, // 100px
+  700: 3.5rem, // 56px
+  600: 2rem, // 32px
+  500: 1.75rem, // 28px
+  400: 1.125rem, // 18px
+  300: 1rem, // 16px <<
+  200: 0.875rem, // 14px
+);
+
+// colors
+$color-theme: (
+  dark: 230 35% 7%,
+  light: 0 0% 100%,
+  accent: 231 77% 90%,
+);
+
+// Breakpoints map
+$breakpoints: (
+  sm: 36em, // 576px
+  md: 48em, // 768px
+  lg: 62rem, // 992px
+  xl: 75rem, // 1200px
+) !default;
+
+/// Container's maximum width
+$max-width: 70rem !default;

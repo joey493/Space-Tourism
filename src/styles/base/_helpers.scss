@@ -1,0 +1,77 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+@use '../abstracts' as *;
+
+:root {
+  @each $ff, $value in $font-family {
+    --ff-#{$ff}: #{$value};
+  };
+
+  @each $fs, $value in $font-size {
+    --fs-#{$fs}: #{$value};
+  };
+
+  @each $color, $value in $color-theme {
+    --clr-#{$color}: #{$value};
+  };
+  
+  --letter-spacing-1: 4.75px;
+  --letter-spacing-2: 2.7px;
+  --letter-spacing-3: 2.35px;
+}
+
+@each $color, $value in $color-theme {
+  .bg-#{$color} {
+    background-color: get-color(clr-#{$color});
+  } 
+
+  .text-#{$color} {
+    color: get-color(clr-#{$color});
+  } 
+};
+
+// set margin to for all childrens except first one
+.flow {
+  > *:where(:not(:first-child)){
+    margin-top: var(--flow-space, 1rem);
+  }
+}
+// containers
+.container {
+  max-width: $max-width;
+  padding-inline: 2rem;
+  margin-inline: auto;
+}
+
+.grid-container {
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  padding-inline: 2rem;
+
+  @include breakpoint-up('lg') {
+    padding-inline: 0;
+    text-align: left;
+    grid-template-columns: minmax(2em,1fr) repeat(2, minmax(0, 35em)) minmax(2em,1fr);
+    
+    > * {
+      &:first-child {
+        grid-column: 2;
+      }
+
+      &:last-child {
+        grid-column: 3;
+      }
+    }
+  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.section-margin {
+  margin-top: 3rem;
+}
